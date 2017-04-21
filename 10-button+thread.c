@@ -1,3 +1,8 @@
+/*---------------------------------------------------------------------------
+One process counts and the other controls the button, switching on and off
+the counter.
+Have a look in line 54 that 
+---------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "contiki.h"
 #include "dev/button-sensor.h"

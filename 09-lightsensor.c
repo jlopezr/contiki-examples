@@ -1,3 +1,6 @@
+/*---------------------------------------------------------------------------
+Simple example to read SENSORS (in the Cooja simulator will read random values)
+---------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "contiki.h"
 #include "dev/button-sensor.h"

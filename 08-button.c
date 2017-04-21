@@ -1,3 +1,6 @@
+/*---------------------------------------------------------------------------
+Simple example of reading a button
+---------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "contiki.h"
 #include "dev/button-sensor.h"
