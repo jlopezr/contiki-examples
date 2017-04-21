@@ -1,3 +1,5 @@
 *.sky
+*.z1
+*.wismote
 contiki-*.*
 obj_*/
