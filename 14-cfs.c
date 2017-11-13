@@ -1,3 +1,6 @@
+/*---------------------------------------------------------------------------
+ * Example of using Contiki File System (CFS)
+ * ---------------------------------------------------------------------------*/
 #include "contiki.h"
 #include "cfs/cfs.h"
 #include <stdio.h>
@@ -19,6 +22,8 @@ PROCESS_THREAD(cfs_process, ev, data)
         printf("Failed to write!");
     }
   }
+
+  //cfs_close(fd);
 
   PROCESS_END();
 }
