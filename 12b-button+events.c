@@ -1,5 +1,8 @@
 /*---------------------------------------------------------------------------
- * Uses an user defined process to signal a process from another
+ * Uses an user defined process to signal a process from another.
+ * In this version the active status is stored in button process and passed 
+ * through the event data pointer
+ *
  * Based on http://senstools.gforge.inria.fr/doku.php?id=contiki:examples#event_post
  * ---------------------------------------------------------------------------*/
 #include "contiki.h"
@@ -27,7 +30,7 @@ PROCESS_THREAD(counter, ev, data)
     PROCESS_WAIT_EVENT(); // <--- Button events are received for ALL processes
     printf("[Counter] Event number %d\n", ev); 
     if(ev == event_data_ready) {
-        active = !active;
+        active = (int)data;
         if(active) {
             printf("Starting timer\n");
             etimer_set(&etim, CLOCK_SECOND);
@@ -48,6 +51,8 @@ PROCESS_THREAD(counter, ev, data)
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(button, ev, data)
 {
+  static int active = 0;
+
   PROCESS_EXITHANDLER(goto exit;)
   PROCESS_BEGIN();
   SENSORS_ACTIVATE(button_sensor);
@@ -61,7 +66,8 @@ PROCESS_THREAD(button, ev, data)
     printf("[Button] Event number %d\n", ev);                           
     if(ev == sensors_event && data == &button_sensor) { 
       leds_toggle(LEDS_ALL);
-      process_post(&counter, event_data_ready, NULL);
+      active = !active;
+      process_post(&counter, event_data_ready, (void*)active);
       printf("Button pressed!\n");
     } 
   }

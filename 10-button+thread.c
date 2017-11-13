@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------
 One process counts and the other controls the button, switching on and off
 the counter.
-Have a look in line 54 that 
+Have a look in line 54 that makes the soft not working
 ---------------------------------------------------------------------------*/
 #include <stdio.h>
 #include "contiki.h"
